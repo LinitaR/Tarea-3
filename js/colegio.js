@@ -43048,36 +43048,135 @@ var baseEstudiantes = [
 var colegio = baseEstudiantes[0].colegio;
 
 function totalPrimaria(baseEstudiantes, primaria) {
-  let estudiantesPrimaria = 0;
-  let curso = colegio[primaria][0];
-  for (let grados in curso) {
-      for (let cursos in curso[grados]) {
-        estudiantesPrimaria += curso[grados][cursos].estudiantes.length;
-      }
-  }
-  return estudiantesPrimaria;
+    let estudiantesPrimaria = 0;
+    let curso = colegio[primaria][0];
+    for (let grados in curso) {
+        for (let cantidad in curso[grados]) {
+            estudiantesPrimaria += curso[grados][cantidad].estudiantes.length;
+        }
+    }
+    return estudiantesPrimaria;
 }
 var estudiantesPrimaria = totalPrimaria(baseEstudiantes, 'primaria');
 
-console.log('Total alumnos primaria: ',estudiantesPrimaria);
+console.log('Total alumnos primaria: ', estudiantesPrimaria);
 
 function totalSecundaria(baseEstudiantes, secundaria) {
-  let estudiantesSecundaria = 0;
-  let curso = colegio[secundaria][0];
-  for (let grados in curso) {
-      for (let cursos in curso[grados]) {
-        estudiantesSecundaria += curso[grados][cursos].estudiantes.length;
-      }
-  }
-  return estudiantesSecundaria;
+    let estudiantesSecundaria = 0;
+    let curso = colegio[secundaria][0];
+    for (let grados in curso) {
+        for (let cantidad in curso[grados]) {
+            estudiantesSecundaria += curso[grados][cantidad].estudiantes.length;
+        }
+    }
+    return estudiantesSecundaria;
 }
 
 var estudiantesSecundaria = totalSecundaria(baseEstudiantes, 'secundaria');
 
-console.log('Total alumnos secundaria: ',estudiantesSecundaria);
+console.log('Total alumnos secundaria: ', estudiantesSecundaria);
 
-var totalAlumnos = estudiantesPrimaria+estudiantesSecundaria;
+var totalAlumnos = estudiantesPrimaria + estudiantesSecundaria;
 
-console.log('el total de los alumnos es: ',totalAlumnos);
+console.log('El total de los alumnos es: ', totalAlumnos);
 
+function niñosPrimaria(baseEstudiantes, primaria, genero) {
+    let primariaNiños = 0;
+    let curso = colegio[primaria][0];
+    if (primaria == 'primaria', genero == 'male') {
+        for (let grados in curso) {
+            for (let cantidad in curso[grados]) {
+                let Cursos = curso[grados][cantidad];
+                for (let estudiantes in Cursos.estudiantes) {
+                    let generoNiño = Cursos.estudiantes[estudiantes].genero;
+                    if (generoNiño == 'male') {
+                        primariaNiños++;
+                    }
+                }
+            }
+        }
+        return primariaNiños;
+    }
+}
+
+var niñosDePrimaria = niñosPrimaria(baseEstudiantes, 'primaria', 'male');
+
+console.log('Total de niños en primaria: ', niñosDePrimaria);
+
+function niñasPrimaria(baseEstudiantes, primaria, genero) {
+    let primariaNiñas = 0;
+    let curso = colegio[primaria][0];
+    if (primaria == 'primaria', genero == 'female') {
+        for (let grados in curso) {
+            for (let cantidad in curso[grados]) {
+                let cursos = curso[grados][cantidad];
+                for (let estudiantes in cursos.estudiantes) {
+                    let generoNiña = cursos.estudiantes[estudiantes].genero;
+                    if (generoNiña == 'female') {
+                        primariaNiñas++;
+                    }
+                }
+            }
+        }
+        return primariaNiñas;
+    }
+}
+
+var niñasDePrimaria = niñasPrimaria(baseEstudiantes, 'primaria', 'female');
+
+console.log('Total de niñas en primaria: ', niñasDePrimaria);
+
+function niñosSecundaria(baseEstudiantes, secundaria, genero) {
+    let secundariaNiños = 0;
+    let curso = colegio[secundaria][0]
+    if (secundaria == 'secundaria', genero == 'male') {
+        for (let grados in curso) {
+            for (let cantidad in curso[grados]) {
+                let Cursos = curso[grados][cantidad];
+                for (let estudiantes in Cursos.estudiantes) {
+                    let generoNiño = Cursos.estudiantes[estudiantes].genero;
+                    if (generoNiño == 'male') {
+                        secundariaNiños++;
+                    }
+                }
+            }
+        }
+        return secundariaNiños;
+    }
+}
+
+var niñosDeSecundaria = niñosSecundaria(baseEstudiantes, 'secundaria', 'male');
+
+console.log('Total de niños en secundaria: ', niñosDeSecundaria);
+
+function niñasSecundaria(baseEstudiantes, secundaria, genero) {
+    let secundariaNiñas = 0;
+    let curso = colegio[secundaria][0];
+    if (secundaria == 'secundaria', genero == 'female') {
+        for (let grados in curso) {
+            for (let cantidad in curso[grados]) {
+                let cursos = curso[grados][cantidad];
+                for (let estudiantes in cursos.estudiantes) {
+                    let generoNiña = cursos.estudiantes[estudiantes].genero;
+                    if (generoNiña == 'female') {
+                        secundariaNiñas++;
+                    }
+                }
+            }
+        }
+        return secundariaNiñas;
+    }
+}
+
+var niñasDeSecundaria = niñasSecundaria(baseEstudiantes, 'secundaria', 'female');
+
+console.log('Total de niñas en secundaria: ', niñasDeSecundaria);
+
+var niñosColegio = niñosDePrimaria + niñosDeSecundaria
+
+console.log('Total de niños en el colegio: ', niñosColegio);
+
+var niñasColegio = niñasDePrimaria + niñasDeSecundaria
+
+console.log('Total de niños en el colegio: ', niñasColegio);
 
